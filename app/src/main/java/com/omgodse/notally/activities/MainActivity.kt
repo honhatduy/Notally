@@ -420,9 +420,9 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun setupSearch() {
-        binding.EnterSearchKeyword.setText(model.keyword)
+        binding.EnterSearchKeyword.setText(model.searchQuery.value.first)
         binding.EnterSearchKeyword.doAfterTextChanged { text ->
-            model.keyword = requireNotNull(text).trim().toString()
+            model.updateSearchKeyword(requireNotNull(text).trim().toString())
         }
     }
 

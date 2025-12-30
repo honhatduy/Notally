@@ -22,7 +22,7 @@ class Search : NotallyFragment() {
         binding?.Deleted?.background = getRippleDrawable(requireContext())
         binding?.Archived?.background = getRippleDrawable(requireContext())
 
-        val checked = when (model.folder) {
+        val checked = when (model.searchQuery.value.second) {
             Folder.NOTES -> R.id.Notes
             Folder.DELETED -> R.id.Deleted
             Folder.ARCHIVED -> R.id.Archived
@@ -36,9 +36,9 @@ class Search : NotallyFragment() {
 
         binding?.RadioGroup?.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
-                R.id.Notes -> model.folder = Folder.NOTES
-                R.id.Deleted -> model.folder = Folder.DELETED
-                R.id.Archived -> model.folder = Folder.ARCHIVED
+                R.id.Notes -> model.updateSearchFolder(Folder.NOTES)
+                R.id.Deleted -> model.updateSearchFolder(Folder.DELETED)
+                R.id.Archived -> model.updateSearchFolder(Folder.ARCHIVED)
             }
         }
     }
